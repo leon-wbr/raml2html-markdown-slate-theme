@@ -5,6 +5,15 @@ module.exports = {
   processRamlObj(ramlObj, config) {
     const env = nunjucks.configure(__dirname, { autoescape: false });
 
+    env.addFilter('toJSON', function (value) {
+      return nunjucks.runtime.markSafe(JSON.parse(value));
+    });
+
+    env.addFilter('json', function (value) {
+      const jsonString = JSON.stringify(value, null, 2);
+      return nunjucks.runtime.markSafe(jsonString);
+    });
+
     return new Promise((resolve) => {
       const result = env.render('index.nunjucks', ramlObj);
       if (config.processOutput) {

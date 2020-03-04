@@ -1,17 +1,11 @@
-# {{ title }} API documentation{% if version %} version {{ version }}{% endif %}
-{{ baseUri }}
+# {{ title }} {% if version %}{{ version }}{% endif %}
+{{ description }}
 
-{% for item in documentation %}
-### {{ item.title }}
-{{ item.content }}
+{% for chapter in documentation %}
+{% include './templates/chapter.nunjucks' %}
 {% endfor %}
 
----
-
 {% for resource in resources %}
-## {% if resource.displayName %}{{ resource.displayName }}{% else %}{{ resource.relativeUri }}{% endif %}
-{{ resource.description }}
-
-{% include "./resource.nunjucks" %}
-
+# {% if resource.displayName %}{{ resource.displayName }}{% else %}{{ resource.relativeUri }}{% endif %}
+{% include './templates/resource.nunjucks' %}
 {% endfor %}
