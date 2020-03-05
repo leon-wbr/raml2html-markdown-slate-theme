@@ -14,5 +14,7 @@ npm i -g raml2html-slate-markdown-theme
 raml2html --theme raml2html-slate-markdown-theme example.raml > example.md
 ```
 
+The converted file is usable with Slate either as an include or index.html.md.
+
 ## License
-raml2html-markdown-template is available under the MIT license. See the LICENSE file for more info.
+raml2html-slate-markdown-template is available under the MIT license. See the LICENSE file for more info.
